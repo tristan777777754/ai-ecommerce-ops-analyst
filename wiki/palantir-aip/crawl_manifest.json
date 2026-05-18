@@ -1,0 +1,1001 @@
+{
+  "startUrl": "https://www.palantir.com/docs/foundry/aip",
+  "scrapedAt": "2026-05-16T03:02:37.251Z",
+  "pageCount": 71,
+  "pages": [
+    {
+      "title": "Overview",
+      "navTitle": "Overview",
+      "section": "",
+      "navUrl": "/foundry/aip/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/overview/",
+      "canonicalSlug": "/foundry/aip/overview/",
+      "file": "foundry-aip-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 4399,
+      "headings": [
+        "AIP overview"
+      ]
+    },
+    {
+      "title": "AIP features",
+      "navTitle": "AIP features",
+      "section": "",
+      "navUrl": "/foundry/aip/aip-features/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/aip-features/",
+      "canonicalSlug": "/foundry/aip/aip-features/",
+      "file": "foundry-aip-aip-features.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 9660,
+      "headings": [
+        "AIP features"
+      ]
+    },
+    {
+      "title": "Get started with AIP",
+      "navTitle": "Get started with AIP",
+      "section": "",
+      "navUrl": "/foundry/aip/getting-started-with-aip/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/getting-started-with-aip/",
+      "canonicalSlug": "/foundry/aip/getting-started-with-aip/",
+      "file": "foundry-aip-getting-started-with-aip.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 1208,
+      "headings": [
+        "Get started with AIP"
+      ]
+    },
+    {
+      "title": "Best practices for LLM prompt engineering",
+      "navTitle": "Best practices for LLM prompt engineering",
+      "section": "",
+      "navUrl": "/foundry/aip/best-practices-prompt-engineering/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/best-practices-prompt-engineering/",
+      "canonicalSlug": "/foundry/aip/best-practices-prompt-engineering/",
+      "file": "foundry-aip-best-practices-prompt-engineering.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 4954,
+      "headings": [
+        "Best practices for LLM prompt engineering"
+      ]
+    },
+    {
+      "title": "Supported LLMs",
+      "navTitle": "Supported LLMs",
+      "section": "",
+      "navUrl": "/foundry/aip/supported-llms/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/supported-llms/",
+      "canonicalSlug": "/foundry/aip/supported-llms/",
+      "file": "foundry-aip-supported-llms.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 14574,
+      "headings": [
+        "Supported LLMs"
+      ]
+    },
+    {
+      "title": "LLM-provider compatible APIs",
+      "navTitle": "LLM-provider compatible APIs",
+      "section": "",
+      "navUrl": "/foundry/aip/llm-provider-compatible-apis/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/llm-provider-compatible-apis/",
+      "canonicalSlug": "/foundry/aip/llm-provider-compatible-apis/",
+      "file": "foundry-aip-llm-provider-compatible-apis.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 3541,
+      "headings": [
+        "LLM-provider compatible APIs"
+      ]
+    },
+    {
+      "title": "AI ethics and governance",
+      "navTitle": "AI ethics and governance",
+      "section": "",
+      "navUrl": "/foundry/aip/ethics-governance/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/ethics-governance/",
+      "canonicalSlug": "/foundry/aip/ethics-governance/",
+      "file": "foundry-aip-ethics-governance.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 21802,
+      "headings": [
+        "AI ethics and governance"
+      ]
+    },
+    {
+      "title": "AIP security and privacy",
+      "navTitle": "AIP security and privacy",
+      "section": "",
+      "navUrl": "/foundry/aip/aip-security/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/aip-security/",
+      "canonicalSlug": "/foundry/aip/aip-security/",
+      "file": "foundry-aip-aip-security.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 5851,
+      "headings": [
+        "AIP security and privacy"
+      ]
+    },
+    {
+      "title": "Compute usage with AIP",
+      "navTitle": "Compute usage with AIP",
+      "section": "",
+      "navUrl": "/foundry/aip/aip-compute-usage/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/aip-compute-usage/",
+      "canonicalSlug": "/foundry/aip/aip-compute-usage/",
+      "file": "foundry-aip-aip-compute-usage.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 25936,
+      "headings": [
+        "Compute usage with AIP"
+      ]
+    },
+    {
+      "title": "AIP observability",
+      "navTitle": "AIP observability",
+      "section": "",
+      "navUrl": "/foundry/aip/aip-observability/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/aip-observability/",
+      "canonicalSlug": "/foundry/aip/aip-observability/",
+      "file": "foundry-aip-aip-observability.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 802,
+      "headings": [
+        "AIP observability"
+      ]
+    },
+    {
+      "title": "Administration > Enable AIP features",
+      "navTitle": "Enable AIP features",
+      "section": "Administration",
+      "navUrl": "/foundry/aip/enable-aip-features/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/enable-aip-features/",
+      "canonicalSlug": "/foundry/aip/enable-aip-features/",
+      "file": "foundry-aip-enable-aip-features.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 8238,
+      "headings": [
+        "Enable AIP features"
+      ]
+    },
+    {
+      "title": "Administration > LLM capacity management",
+      "navTitle": "LLM capacity management",
+      "section": "Administration",
+      "navUrl": "/foundry/aip/llm-capacity-management/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/llm-capacity-management/",
+      "canonicalSlug": "/foundry/aip/llm-capacity-management/",
+      "file": "foundry-aip-llm-capacity-management.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 36053,
+      "headings": [
+        "LLM capacity management"
+      ]
+    },
+    {
+      "title": "Bring your own model > Bring your own model to AIP",
+      "navTitle": "Bring your own model to AIP",
+      "section": "Bring your own model",
+      "navUrl": "/foundry/aip/bring-your-own-model/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/bring-your-own-model/",
+      "canonicalSlug": "/foundry/aip/bring-your-own-model/",
+      "file": "foundry-aip-bring-your-own-model.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 7651,
+      "headings": [
+        "Bring your own model to AIP"
+      ]
+    },
+    {
+      "title": "Bring your own model > Register an LLM using function interfaces",
+      "navTitle": "Register an LLM using function interfaces",
+      "section": "Bring your own model",
+      "navUrl": "/foundry/aip/chat-completion-function-interface-quickstart/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/chat-completion-function-interface-quickstart/",
+      "canonicalSlug": "/foundry/aip/chat-completion-function-interface-quickstart/",
+      "file": "foundry-aip-chat-completion-function-interface-quickstart.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 13326,
+      "headings": [
+        "Register an LLM using function interfaces"
+      ]
+    },
+    {
+      "title": "Bring your own model > Use registered LLM",
+      "navTitle": "Use registered LLM",
+      "section": "Bring your own model",
+      "navUrl": "/foundry/aip/use-registered-llm/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip/use-registered-llm/",
+      "canonicalSlug": "/foundry/aip/use-registered-llm/",
+      "file": "foundry-aip-use-registered-llm.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 11236,
+      "headings": [
+        "Use your registered LLM"
+      ]
+    },
+    {
+      "title": "AI FDE > Overview",
+      "navTitle": "Overview",
+      "section": "AI FDE",
+      "navUrl": "/foundry/ai-fde/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/ai-fde/overview/",
+      "canonicalSlug": "/foundry/ai-fde/overview/",
+      "file": "foundry-ai-fde-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 5286,
+      "headings": [
+        "AI FDE"
+      ]
+    },
+    {
+      "title": "AI FDE > Navigation",
+      "navTitle": "Navigation",
+      "section": "AI FDE",
+      "navUrl": "/foundry/ai-fde/navigation/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/ai-fde/navigation/",
+      "canonicalSlug": "/foundry/ai-fde/navigation/",
+      "file": "foundry-ai-fde-navigation.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 3388,
+      "headings": [
+        "Navigation"
+      ]
+    },
+    {
+      "title": "AI FDE > Modes and skills",
+      "navTitle": "Modes and skills",
+      "section": "AI FDE",
+      "navUrl": "/foundry/ai-fde/modes-and-skills/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/ai-fde/modes-and-skills/",
+      "canonicalSlug": "/foundry/ai-fde/modes-and-skills/",
+      "file": "foundry-ai-fde-modes-and-skills.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 4190,
+      "headings": [
+        "Modes and skills"
+      ]
+    },
+    {
+      "title": "AI FDE > Security and governance",
+      "navTitle": "Security and governance",
+      "section": "AI FDE",
+      "navUrl": "/foundry/ai-fde/security-and-governance/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/ai-fde/security-and-governance/",
+      "canonicalSlug": "/foundry/ai-fde/security-and-governance/",
+      "file": "foundry-ai-fde-security-and-governance.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 4048,
+      "headings": [
+        "Security and governance"
+      ]
+    },
+    {
+      "title": "AI FDE > Best practices",
+      "navTitle": "Best practices",
+      "section": "AI FDE",
+      "navUrl": "/foundry/ai-fde/best-practices/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/ai-fde/best-practices/",
+      "canonicalSlug": "/foundry/ai-fde/best-practices/",
+      "file": "foundry-ai-fde-best-practices.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 3495,
+      "headings": [
+        "Best practices for using AI FDE"
+      ]
+    },
+    {
+      "title": "AIP Analyst > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Analyst",
+      "navUrl": "/foundry/aip-analyst/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-analyst/overview/",
+      "canonicalSlug": "/foundry/aip-analyst/overview/",
+      "file": "foundry-aip-analyst-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 6770,
+      "headings": [
+        "AIP Analyst"
+      ]
+    },
+    {
+      "title": "AIP Analyst > Core concepts",
+      "navTitle": "Core concepts",
+      "section": "AIP Analyst",
+      "navUrl": "/foundry/aip-analyst/core-concepts/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-analyst/core-concepts/",
+      "canonicalSlug": "/foundry/aip-analyst/core-concepts/",
+      "file": "foundry-aip-analyst-core-concepts.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 1705,
+      "headings": [
+        "Core concepts"
+      ]
+    },
+    {
+      "title": "AIP Analyst > Analysis configuration",
+      "navTitle": "Analysis configuration",
+      "section": "AIP Analyst",
+      "navUrl": "/foundry/aip-analyst/analysis-configuration/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-analyst/analysis-configuration/",
+      "canonicalSlug": "/foundry/aip-analyst/analysis-configuration/",
+      "file": "foundry-aip-analyst-analysis-configuration.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 3901,
+      "headings": [
+        "Analysis configuration"
+      ]
+    },
+    {
+      "title": "AIP Analyst > Workshop widget",
+      "navTitle": "Workshop widget",
+      "section": "AIP Analyst",
+      "navUrl": "/foundry/aip-analyst/workshop-widget/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-analyst/workshop-widget/",
+      "canonicalSlug": "/foundry/aip-analyst/workshop-widget/",
+      "file": "foundry-aip-analyst-workshop-widget.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 8781,
+      "headings": [
+        "AIP Analyst Workshop widget"
+      ]
+    },
+    {
+      "title": "AIP Assist > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Assist",
+      "navUrl": "/foundry/assist/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/overview/",
+      "canonicalSlug": "/foundry/assist/overview/",
+      "file": "foundry-assist-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 4477,
+      "headings": [
+        "AIP Assist"
+      ]
+    },
+    {
+      "title": "AIP Assist > AIP Assist best practices",
+      "navTitle": "AIP Assist best practices",
+      "section": "AIP Assist",
+      "navUrl": "/foundry/assist/aip-best-practices/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/aip-best-practices/",
+      "canonicalSlug": "/foundry/assist/aip-best-practices/",
+      "file": "foundry-assist-aip-best-practices.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 2780,
+      "headings": [
+        "AIP Assist best practices"
+      ]
+    },
+    {
+      "title": "Power AIP Assist with custom content sources > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Assist / Power AIP Assist with custom content sources",
+      "navUrl": "/foundry/assist/aip-assist-custom-docs-overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/aip-assist-custom-docs-overview/",
+      "canonicalSlug": "/foundry/assist/aip-assist-custom-docs-overview/",
+      "file": "foundry-assist-aip-assist-custom-docs-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 3314,
+      "headings": [
+        "Custom content sources in AIP Assist"
+      ]
+    },
+    {
+      "title": "Power AIP Assist with custom content sources > Register custom content sources",
+      "navTitle": "Register custom content sources",
+      "section": "AIP Assist / Power AIP Assist with custom content sources",
+      "navUrl": "/foundry/assist/aip-assist-registering-content/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/aip-assist-registering-content/",
+      "canonicalSlug": "/foundry/assist/aip-assist-registering-content/",
+      "file": "foundry-assist-aip-assist-registering-content.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 6833,
+      "headings": [
+        "Register custom content sources with AIP Assist"
+      ]
+    },
+    {
+      "title": "Power AIP Assist with custom content sources > Serve custom content sources to users",
+      "navTitle": "Serve custom content sources to users",
+      "section": "AIP Assist / Power AIP Assist with custom content sources",
+      "navUrl": "/foundry/assist/adding-documentation-to-aip-assist/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/adding-documentation-to-aip-assist/",
+      "canonicalSlug": "/foundry/assist/adding-documentation-to-aip-assist/",
+      "file": "foundry-assist-adding-documentation-to-aip-assist.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 4166,
+      "headings": [
+        "Serve custom content sources with AIP Assist"
+      ]
+    },
+    {
+      "title": "Power AIP Assist with custom content sources > Deploy custom source-backed AIP Chatbots",
+      "navTitle": "Deploy custom source-backed AIP Chatbots",
+      "section": "AIP Assist / Power AIP Assist with custom content sources",
+      "navUrl": "/foundry/assist/agents-in-aip-assist/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/agents-in-aip-assist/",
+      "canonicalSlug": "/foundry/assist/agents-in-aip-assist/",
+      "file": "foundry-assist-agents-in-aip-assist.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 6960,
+      "headings": [
+        "Deploy AIP Chatbots to AIP Assist"
+      ]
+    },
+    {
+      "title": "Power AIP Assist with custom content sources > Custom content source best practices",
+      "navTitle": "Custom content source best practices",
+      "section": "AIP Assist / Power AIP Assist with custom content sources",
+      "navUrl": "/foundry/assist/custom-documentation-best-practices/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/custom-documentation-best-practices/",
+      "canonicalSlug": "/foundry/assist/custom-documentation-best-practices/",
+      "file": "foundry-assist-custom-documentation-best-practices.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 3423,
+      "headings": [
+        "Custom content source best practices"
+      ]
+    },
+    {
+      "title": "AIP Assist > AIP Assist application integrations",
+      "navTitle": "AIP Assist application integrations",
+      "section": "AIP Assist",
+      "navUrl": "/foundry/assist/application-integrations/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/application-integrations/",
+      "canonicalSlug": "/foundry/assist/application-integrations/",
+      "file": "foundry-assist-application-integrations.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 5646,
+      "headings": [
+        "AIP Assist application integrations"
+      ]
+    },
+    {
+      "title": "AIP Assist > Suggested actions in AIP Assist",
+      "navTitle": "Suggested actions in AIP Assist",
+      "section": "AIP Assist",
+      "navUrl": "/foundry/assist/aip-assist-suggested-actions/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/assist/aip-assist-suggested-actions/",
+      "canonicalSlug": "/foundry/assist/aip-assist-suggested-actions/",
+      "file": "foundry-assist-aip-assist-suggested-actions.md",
+      "lastModified": "Fri, 15 May 2026 09:30:36 GMT",
+      "markdownChars": 1359,
+      "headings": [
+        "Suggested actions in AIP Assist"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/overview/",
+      "canonicalSlug": "/foundry/chatbot-studio/overview/",
+      "file": "foundry-chatbot-studio-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 1804,
+      "headings": [
+        "AIP Chatbot Studio"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Core concepts",
+      "navTitle": "Core concepts",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/core-concepts/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/core-concepts/",
+      "canonicalSlug": "/foundry/chatbot-studio/core-concepts/",
+      "file": "foundry-chatbot-studio-core-concepts.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 3818,
+      "headings": [
+        "Core concepts"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Getting started",
+      "navTitle": "Getting started",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/getting-started/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/getting-started/",
+      "canonicalSlug": "/foundry/chatbot-studio/getting-started/",
+      "file": "foundry-chatbot-studio-getting-started.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 5945,
+      "headings": [
+        "Getting started"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Application state",
+      "navTitle": "Application state",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/application-state/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/application-state/",
+      "canonicalSlug": "/foundry/chatbot-studio/application-state/",
+      "file": "foundry-chatbot-studio-application-state.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 6574,
+      "headings": [
+        "Application state"
+      ]
+    },
+    {
+      "title": "Retrieval context > Context types",
+      "navTitle": "Context types",
+      "section": "AIP Chatbot Studio / Retrieval context",
+      "navUrl": "/foundry/chatbot-studio/retrieval-context/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/retrieval-context/",
+      "canonicalSlug": "/foundry/chatbot-studio/retrieval-context/",
+      "file": "foundry-chatbot-studio-retrieval-context.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 7512,
+      "headings": [
+        "Retrieval context"
+      ]
+    },
+    {
+      "title": "Retrieval context > Citations",
+      "navTitle": "Citations",
+      "section": "AIP Chatbot Studio / Retrieval context",
+      "navUrl": "/foundry/chatbot-studio/citations/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/citations/",
+      "canonicalSlug": "/foundry/chatbot-studio/citations/",
+      "file": "foundry-chatbot-studio-citations.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 12638,
+      "headings": [
+        "Citations"
+      ]
+    },
+    {
+      "title": "Tools > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Chatbot Studio / Tools",
+      "navUrl": "/foundry/chatbot-studio/tools/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/tools/",
+      "canonicalSlug": "/foundry/chatbot-studio/tools/",
+      "file": "foundry-chatbot-studio-tools.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 4085,
+      "headings": [
+        "Tools"
+      ]
+    },
+    {
+      "title": "Tools > Use commands as tools in AIP Chatbot Studio",
+      "navTitle": "Use commands as tools in AIP Chatbot Studio",
+      "section": "AIP Chatbot Studio / Tools",
+      "navUrl": "/foundry/chatbot-studio/commands-as-tools/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/commands-as-tools/",
+      "canonicalSlug": "/foundry/chatbot-studio/commands-as-tools/",
+      "file": "foundry-chatbot-studio-commands-as-tools.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 9159,
+      "headings": [
+        "Use commands as tools in AIP Chatbot Studio"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Chatbots as Functions",
+      "navTitle": "Chatbots as Functions",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/chatbots-as-functions/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/chatbots-as-functions/",
+      "canonicalSlug": "/foundry/chatbot-studio/chatbots-as-functions/",
+      "file": "foundry-chatbot-studio-chatbots-as-functions.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 5977,
+      "headings": [
+        "Chatbots as Functions"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Distribute AIP Chatbots using Marketplace",
+      "navTitle": "Distribute AIP Chatbots using Marketplace",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/marketplace/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/marketplace/",
+      "canonicalSlug": "/foundry/chatbot-studio/marketplace/",
+      "file": "foundry-chatbot-studio-marketplace.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 1819,
+      "headings": [
+        "Distribute AIP Chatbots using Marketplace"
+      ]
+    },
+    {
+      "title": "AIP Chatbot Studio > Use AIP Chatbots through Foundry APIs",
+      "navTitle": "Use AIP Chatbots through Foundry APIs",
+      "section": "AIP Chatbot Studio",
+      "navUrl": "/foundry/chatbot-studio/foundry-apis/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/chatbot-studio/foundry-apis/",
+      "canonicalSlug": "/foundry/chatbot-studio/foundry-apis/",
+      "file": "foundry-chatbot-studio-foundry-apis.md",
+      "lastModified": "Fri, 15 May 2026 09:30:38 GMT",
+      "markdownChars": 8670,
+      "headings": [
+        "Use AIP Chatbots through Foundry APIs"
+      ]
+    },
+    {
+      "title": "AIP Document Intelligence > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Document Intelligence",
+      "navUrl": "/foundry/document-intelligence/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/document-intelligence/overview/",
+      "canonicalSlug": "/foundry/document-intelligence/overview/",
+      "file": "foundry-document-intelligence-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:39 GMT",
+      "markdownChars": 5881,
+      "headings": [
+        "AIP Document Intelligence"
+      ]
+    },
+    {
+      "title": "AIP Document Intelligence > Core concepts",
+      "navTitle": "Core concepts",
+      "section": "AIP Document Intelligence",
+      "navUrl": "/foundry/document-intelligence/core-concepts/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/document-intelligence/core-concepts/",
+      "canonicalSlug": "/foundry/document-intelligence/core-concepts/",
+      "file": "foundry-document-intelligence-core-concepts.md",
+      "lastModified": "Fri, 15 May 2026 09:30:39 GMT",
+      "markdownChars": 1890,
+      "headings": [
+        "Core concepts"
+      ]
+    },
+    {
+      "title": "AIP Document Intelligence > Deploy extraction strategies to Python transforms",
+      "navTitle": "Deploy extraction strategies to Python transforms",
+      "section": "AIP Document Intelligence",
+      "navUrl": "/foundry/document-intelligence/deploy-to-python-transforms/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/document-intelligence/deploy-to-python-transforms/",
+      "canonicalSlug": "/foundry/document-intelligence/deploy-to-python-transforms/",
+      "file": "foundry-document-intelligence-deploy-to-python-transforms.md",
+      "lastModified": "Fri, 15 May 2026 09:30:39 GMT",
+      "markdownChars": 20721,
+      "headings": [
+        "Deploy extraction strategies to Python transforms"
+      ]
+    },
+    {
+      "title": "AIP Evals > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/overview/",
+      "canonicalSlug": "/foundry/aip-evals/overview/",
+      "file": "foundry-aip-evals-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 2235,
+      "headings": [
+        "AIP Evals"
+      ]
+    },
+    {
+      "title": "AIP Evals > Evaluation suites for Logic functions",
+      "navTitle": "Evaluation suites for Logic functions",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/getting-started/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/getting-started/",
+      "canonicalSlug": "/foundry/aip-evals/getting-started/",
+      "file": "foundry-aip-evals-getting-started.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 5294,
+      "headings": [
+        "Evaluation suites for Logic functions"
+      ]
+    },
+    {
+      "title": "AIP Evals > Create an evaluation suite",
+      "navTitle": "Create an evaluation suite",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/create-suite/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/create-suite/",
+      "canonicalSlug": "/foundry/aip-evals/create-suite/",
+      "file": "foundry-aip-evals-create-suite.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 12988,
+      "headings": [
+        "Create an evaluation suite"
+      ]
+    },
+    {
+      "title": "AIP Evals > Use intermediate parameters to evaluate block output",
+      "navTitle": "Use intermediate parameters to evaluate block output",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/intermediate-parameters/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/intermediate-parameters/",
+      "canonicalSlug": "/foundry/aip-evals/intermediate-parameters/",
+      "file": "foundry-aip-evals-intermediate-parameters.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 1084,
+      "headings": [
+        "Use intermediate parameters to evaluate block output"
+      ]
+    },
+    {
+      "title": "AIP Evals > Evaluate Ontology edits",
+      "navTitle": "Evaluate Ontology edits",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/ontology-edits/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/ontology-edits/",
+      "canonicalSlug": "/foundry/aip-evals/ontology-edits/",
+      "file": "foundry-aip-evals-ontology-edits.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 3041,
+      "headings": [
+        "Evaluation functions and Ontology edits"
+      ]
+    },
+    {
+      "title": "AIP Evals > Run an evaluation suite",
+      "navTitle": "Run an evaluation suite",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/run-suite/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/run-suite/",
+      "canonicalSlug": "/foundry/aip-evals/run-suite/",
+      "file": "foundry-aip-evals-run-suite.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 7250,
+      "headings": [
+        "Run an evaluation suite"
+      ]
+    },
+    {
+      "title": "AIP Evals > Run experiments",
+      "navTitle": "Run experiments",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/experiments/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/experiments/",
+      "canonicalSlug": "/foundry/aip-evals/experiments/",
+      "file": "foundry-aip-evals-experiments.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 7114,
+      "headings": [
+        "Run experiments"
+      ]
+    },
+    {
+      "title": "AIP Evals > Write run results to a dataset",
+      "navTitle": "Write run results to a dataset",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/results-dataset/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/results-dataset/",
+      "canonicalSlug": "/foundry/aip-evals/results-dataset/",
+      "file": "foundry-aip-evals-results-dataset.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 2308,
+      "headings": [
+        "Write run results to a dataset"
+      ]
+    },
+    {
+      "title": "AIP Evals > Analyze run results",
+      "navTitle": "Analyze run results",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/analyze-run-results/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/analyze-run-results/",
+      "canonicalSlug": "/foundry/aip-evals/analyze-run-results/",
+      "file": "foundry-aip-evals-analyze-run-results.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 5005,
+      "headings": [
+        "Analyze run results"
+      ]
+    },
+    {
+      "title": "AIP Evals > View results in metrics dashboard",
+      "navTitle": "View results in metrics dashboard",
+      "section": "AIP Evals",
+      "navUrl": "/foundry/aip-evals/metrics-dashboard/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/aip-evals/metrics-dashboard/",
+      "canonicalSlug": "/foundry/aip-evals/metrics-dashboard/",
+      "file": "foundry-aip-evals-metrics-dashboard.md",
+      "lastModified": "Fri, 15 May 2026 09:30:32 GMT",
+      "markdownChars": 1325,
+      "headings": [
+        "Evaluations metrics dashboard"
+      ]
+    },
+    {
+      "title": "AIP Logic > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/overview/",
+      "canonicalSlug": "/foundry/logic/overview/",
+      "file": "foundry-logic-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 2725,
+      "headings": [
+        "AIP Logic"
+      ]
+    },
+    {
+      "title": "AIP Logic > Core concepts",
+      "navTitle": "Core concepts",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/core-concepts/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/core-concepts/",
+      "canonicalSlug": "/foundry/logic/core-concepts/",
+      "file": "foundry-logic-core-concepts.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 1965,
+      "headings": [
+        "Core concepts"
+      ]
+    },
+    {
+      "title": "AIP Logic > Getting started",
+      "navTitle": "Getting started",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/getting-started/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/getting-started/",
+      "canonicalSlug": "/foundry/logic/getting-started/",
+      "file": "foundry-logic-getting-started.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 8829,
+      "headings": [
+        "Getting started"
+      ]
+    },
+    {
+      "title": "AIP Logic > Blocks",
+      "navTitle": "Blocks",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/blocks/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/blocks/",
+      "canonicalSlug": "/foundry/logic/blocks/",
+      "file": "foundry-logic-blocks.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 9254,
+      "headings": [
+        "Blocks"
+      ]
+    },
+    {
+      "title": "AIP Logic > Automate AIP Logic",
+      "navTitle": "Automate AIP Logic",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/aip-logic-integration-automate/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/aip-logic-integration-automate/",
+      "canonicalSlug": "/foundry/logic/aip-logic-integration-automate/",
+      "file": "foundry-logic-aip-logic-integration-automate.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 2889,
+      "headings": [
+        "AIP Logic integration with Automate"
+      ]
+    },
+    {
+      "title": "AIP Logic > Compute usage",
+      "navTitle": "Compute usage",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/compute-usage/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/compute-usage/",
+      "canonicalSlug": "/foundry/logic/compute-usage/",
+      "file": "foundry-logic-compute-usage.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 4517,
+      "headings": [
+        "Compute usage with AIP Logic"
+      ]
+    },
+    {
+      "title": "AIP Logic > AIP Logic metrics",
+      "navTitle": "AIP Logic metrics",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/logic-metrics/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/logic-metrics/",
+      "canonicalSlug": "/foundry/logic/logic-metrics/",
+      "file": "foundry-logic-logic-metrics.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 1937,
+      "headings": [
+        "AIP Logic metrics"
+      ]
+    },
+    {
+      "title": "AIP Logic > Execution mode settings",
+      "navTitle": "Execution mode settings",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/execution-mode-settings/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/execution-mode-settings/",
+      "canonicalSlug": "/foundry/logic/execution-mode-settings/",
+      "file": "foundry-logic-execution-mode-settings.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 1485,
+      "headings": [
+        "Execution mode settings"
+      ]
+    },
+    {
+      "title": "AIP Logic > Branching AIP Logic",
+      "navTitle": "Branching AIP Logic",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/branching-logic/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/branching-logic/",
+      "canonicalSlug": "/foundry/logic/branching-logic/",
+      "file": "foundry-logic-branching-logic.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 5105,
+      "headings": [
+        "Branching AIP Logic"
+      ]
+    },
+    {
+      "title": "AIP Logic > FAQ",
+      "navTitle": "FAQ",
+      "section": "AIP Logic",
+      "navUrl": "/foundry/logic/faq/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/logic/faq/",
+      "canonicalSlug": "/foundry/logic/faq/",
+      "file": "foundry-logic-faq.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 7613,
+      "headings": [
+        "AIP Logic FAQ"
+      ]
+    },
+    {
+      "title": "AIP Model Catalog > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Model Catalog",
+      "navUrl": "/foundry/model-catalog/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/model-catalog/overview/",
+      "canonicalSlug": "/foundry/model-catalog/overview/",
+      "file": "foundry-model-catalog-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 7243,
+      "headings": [
+        "Model Catalog"
+      ]
+    },
+    {
+      "title": "AIP Model Catalog > Model deprecation",
+      "navTitle": "Model deprecation",
+      "section": "AIP Model Catalog",
+      "navUrl": "/foundry/model-catalog/model-deprecation/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/model-catalog/model-deprecation/",
+      "canonicalSlug": "/foundry/model-catalog/model-deprecation/",
+      "file": "foundry-model-catalog-model-deprecation.md",
+      "lastModified": "Fri, 15 May 2026 09:30:40 GMT",
+      "markdownChars": 23774,
+      "headings": [
+        "Model deprecation"
+      ]
+    },
+    {
+      "title": "AIP Threads > Overview",
+      "navTitle": "Overview",
+      "section": "AIP Threads",
+      "navUrl": "/foundry/threads/overview/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/threads/overview/",
+      "canonicalSlug": "/foundry/threads/overview/",
+      "file": "foundry-threads-overview.md",
+      "lastModified": "Fri, 15 May 2026 09:30:46 GMT",
+      "markdownChars": 3144,
+      "headings": [
+        "AIP Threads [Beta]"
+      ]
+    },
+    {
+      "title": "AIP Threads > Getting started",
+      "navTitle": "Getting started",
+      "section": "AIP Threads",
+      "navUrl": "/foundry/threads/getting-started/",
+      "sourceUrl": "https://www.palantir.com/docs/foundry/threads/getting-started/",
+      "canonicalSlug": "/foundry/threads/getting-started/",
+      "file": "foundry-threads-getting-started.md",
+      "lastModified": "Fri, 15 May 2026 09:30:46 GMT",
+      "markdownChars": 7704,
+      "headings": [
+        "Getting started"
+      ]
+    }
+  ]
+}

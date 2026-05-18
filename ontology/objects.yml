@@ -1,0 +1,354 @@
+version: 1
+project: ai_ecommerce_ops_ontology
+description: >
+  Business and analytical object definitions for a local Palantir-style
+  e-commerce operations ontology built on the Olist dataset.
+
+objects:
+  - id: Customer
+    category: core
+    description: A marketplace buyer identity, grouped by customer_unique_id when possible.
+    source_tables:
+      - customers
+      - orders
+      - order_payments
+      - order_reviews
+    primary_key: customer_unique_id
+    alternate_keys:
+      - customer_id
+    properties:
+      - customer_unique_id
+      - customer_id
+      - customer_city
+      - customer_state
+      - first_purchase_date
+      - last_purchase_date
+      - frequency
+      - monetary_value
+      - avg_order_value
+      - recency_days
+      - rfm_segment
+      - churn_risk_score
+    operational_meaning: >
+      Used to identify high-value, recent, at-risk, and dormant customers for
+      retention and winback workflows.
+
+  - id: Order
+    category: core
+    description: A marketplace order with lifecycle, payment, delivery, and review state.
+    source_tables:
+      - orders
+      - order_items
+      - order_payments
+      - order_reviews
+    primary_key: order_id
+    properties:
+      - order_id
+      - customer_id
+      - order_status
+      - order_purchase_timestamp
+      - order_approved_at
+      - order_delivered_customer_date
+      - order_estimated_delivery_date
+      - revenue
+      - payment_value
+      - item_count
+      - avg_review_score
+      - low_review_flag
+      - delivery_delay_days
+      - late_delivery_flag
+    operational_meaning: >
+      Used to reason about demand, delivery performance, review outcomes, and
+      order-level operational issues.
+
+  - id: OrderItem
+    category: core
+    description: A line item within an order, linking products and sellers to revenue.
+    source_tables:
+      - order_items
+      - products
+      - sellers
+    primary_key: order_id + order_item_id
+    properties:
+      - order_id
+      - order_item_id
+      - product_id
+      - seller_id
+      - price
+      - freight_value
+      - shipping_limit_date
+      - category_name
+    operational_meaning: >
+      Used to connect demand, product mix, seller fulfillment, and revenue at
+      the line-item level.
+
+  - id: Product
+    category: core
+    description: A catalog item sold through the marketplace.
+    source_tables:
+      - products
+      - order_items
+      - product_category_name_translation
+    primary_key: product_id
+    properties:
+      - product_id
+      - product_category_name
+      - category_name
+      - product_weight_g
+      - product_length_cm
+      - product_height_cm
+      - product_width_cm
+      - total_revenue
+      - order_count
+      - review_risk_score
+    operational_meaning: >
+      Used to understand product performance, category membership, and product-level
+      quality or fulfillment risk.
+
+  - id: ProductCategory
+    category: core
+    description: A translated product category used for revenue, review, and opportunity analysis.
+    source_tables:
+      - products
+      - product_category_name_translation
+      - order_items
+      - order_reviews
+    primary_key: category_name
+    properties:
+      - category_name
+      - revenue
+      - revenue_share
+      - cumulative_share
+      - pareto_band
+      - orders
+      - products
+      - low_review_rate
+      - avg_review_score
+    operational_meaning: >
+      Used to identify revenue-critical categories, long-tail categories, and
+      categories with review or delivery issues.
+
+  - id: Seller
+    category: core
+    description: A marketplace seller that fulfills order items.
+    source_tables:
+      - sellers
+      - order_items
+      - orders
+      - order_reviews
+    primary_key: seller_id
+    properties:
+      - seller_id
+      - seller_city
+      - seller_state
+      - orders
+      - items
+      - revenue
+      - freight_value
+      - avg_review_score
+      - low_review_rate
+      - late_delivery_rate
+      - avg_delivery_delay_days
+      - seller_reliability_score
+      - risk_band
+    operational_meaning: >
+      Used to find seller reliability problems, fulfillment risk, and candidates
+      for investigation or monitoring.
+
+  - id: Payment
+    category: core
+    description: Payment facts attached to an order.
+    source_tables:
+      - order_payments
+    primary_key: order_id + payment_sequential
+    properties:
+      - order_id
+      - payment_sequential
+      - payment_type
+      - payment_installments
+      - payment_value
+    operational_meaning: >
+      Used to calculate order revenue and understand payment behavior.
+
+  - id: Review
+    category: core
+    description: Customer review feedback attached to an order.
+    source_tables:
+      - order_reviews
+    primary_key: review_id
+    properties:
+      - review_id
+      - order_id
+      - review_score
+      - review_comment_title
+      - review_comment_message
+      - review_creation_date
+      - review_answer_timestamp
+      - dissatisfaction_flag
+      - has_review_comment
+    operational_meaning: >
+      Used to detect dissatisfaction, product quality issues, expectation mismatch,
+      and delivery-related customer problems.
+
+  - id: Geography
+    category: core
+    description: City, state, and zip-prefix geography for customers and sellers.
+    source_tables:
+      - geolocation
+      - customers
+      - sellers
+    primary_key: geolocation_zip_code_prefix
+    properties:
+      - geolocation_zip_code_prefix
+      - city
+      - state
+      - latitude
+      - longitude
+      - orders
+      - late_delivery_rate
+      - avg_delay_days
+    operational_meaning: >
+      Used to identify delivery risk clusters by state, city, or zip-prefix.
+
+  - id: CustomerSegment
+    category: analytical
+    description: RFM-based customer group.
+    source_tables:
+      - derived_from_orders
+      - derived_from_payments
+    primary_key: segment
+    properties:
+      - segment
+      - customers
+      - revenue
+      - revenue_share
+      - avg_recency_days
+      - avg_frequency
+      - avg_monetary_value
+    operational_meaning: >
+      Used to prioritize customer retention, winback, and growth actions.
+
+  - id: RetentionOpportunity
+    category: analytical
+    description: A customer-level opportunity to recover or retain value.
+    source_tables:
+      - derived_from_customer_rfm
+    primary_key: opportunity_id
+    properties:
+      - opportunity_id
+      - customer_unique_id
+      - opportunity_type
+      - priority
+      - monetary_value
+      - recency_days
+      - evidence
+    operational_meaning: >
+      Used to generate customer winback or retention recommendations.
+
+  - id: SellerRisk
+    category: analytical
+    description: A seller-level operational risk object.
+    source_tables:
+      - derived_from_seller_performance
+    primary_key: seller_id
+    properties:
+      - seller_id
+      - risk_band
+      - seller_reliability_score
+      - orders
+      - revenue
+      - late_delivery_rate
+      - low_review_rate
+      - avg_review_score
+      - evidence
+    operational_meaning: >
+      Used to trigger seller investigation, monitoring, or deprioritization workflows.
+
+  - id: DeliveryRisk
+    category: analytical
+    description: Delivery risk by order, seller, product category, geography, or route proxy.
+    source_tables:
+      - derived_from_orders
+      - derived_from_order_items
+      - derived_from_geography
+    primary_key: delivery_risk_id
+    properties:
+      - delivery_risk_id
+      - target_type
+      - target_id
+      - orders
+      - late_delivery_rate
+      - avg_delay_days
+      - priority
+      - evidence
+    operational_meaning: >
+      Used to monitor logistics issues and recommend delivery process actions.
+
+  - id: ReviewRisk
+    category: analytical
+    description: Review dissatisfaction risk by product, product category, seller, or order.
+    source_tables:
+      - derived_from_reviews
+      - derived_from_order_items
+    primary_key: review_risk_id
+    properties:
+      - review_risk_id
+      - target_type
+      - target_id
+      - orders
+      - low_review_rate
+      - avg_review_score
+      - priority
+      - evidence
+    operational_meaning: >
+      Used to investigate customer dissatisfaction and product or seller quality issues.
+
+  - id: ProductOpportunity
+    category: analytical
+    description: A revenue or growth opportunity attached to a product or product category.
+    source_tables:
+      - derived_from_product_pareto
+      - derived_from_category_pareto
+    primary_key: opportunity_id
+    properties:
+      - opportunity_id
+      - target_type
+      - target_id
+      - revenue
+      - revenue_share
+      - pareto_band
+      - review_risk_score
+      - priority
+      - evidence
+    operational_meaning: >
+      Used to identify categories or products to promote, protect, monitor, or inspect.
+
+  - id: BusinessRecommendation
+    category: analytical
+    description: A proposed business action generated from ontology objects, metrics, and rules.
+    source_tables:
+      - derived_from_all_analytical_objects
+    primary_key: recommendation_id
+    properties:
+      - recommendation_id
+      - target_type
+      - target_id
+      - action_type
+      - priority
+      - trigger
+      - reason
+      - evidence
+      - status
+      - created_at
+      - approved_at
+      - executed_at
+    allowed_statuses:
+      - proposed
+      - approved
+      - rejected
+      - executed
+      - expired
+    operational_meaning: >
+      The main action object for the agent. Every recommendation must point to
+      a target object and include evidence before it can be approved or executed.
+

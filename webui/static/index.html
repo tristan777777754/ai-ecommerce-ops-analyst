@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-commerce Ops Analyst</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div>
+            <p class="eyebrow">Ontology Analyst</p>
+            <h1>E-commerce Ops Analyst</h1>
+          </div>
+          <div id="statusDot" class="status-dot" title="API status"></div>
+        </div>
+
+        <section class="panel">
+          <h2>Weekly Focus</h2>
+          <div class="kpi-grid">
+            <div><span>Recommendations</span><strong>94</strong></div>
+            <div><span>Status</span><strong>Proposed</strong></div>
+            <div><span>Top segment</span><strong>14,771</strong></div>
+            <div><span>Action layer</span><strong>Ready</strong></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Ask These</h2>
+          <button class="prompt">What should I do this week?</button>
+          <button class="prompt">Which sellers should I investigate first?</button>
+          <button class="prompt">Which customers should I win back?</button>
+          <button class="prompt">Which categories should I promote?</button>
+          <button class="prompt">Why did you recommend seller 1ca7077d890b907f89be8c954a02686a?</button>
+          <button class="prompt">Can you execute these actions?</button>
+        </section>
+
+        <section class="panel compact">
+          <h2>Sources</h2>
+          <p>Ontology wiki, action rules, BusinessRecommendation records, weekly ops brief.</p>
+          <p id="modelName">Model: checking...</p>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="toolbar">
+          <div>
+            <p class="eyebrow">Operator View</p>
+            <h2>Ask for recommended actions, evidence, and approval status</h2>
+          </div>
+          <button id="clearChat" class="secondary">Clear</button>
+        </header>
+
+        <div id="messages" class="messages">
+          <article class="message assistant">
+            <div class="avatar">AI</div>
+            <div class="bubble">
+              <p>Ask me what the marketplace manager should do this week. I will answer from the ontology and the proposed BusinessRecommendation records.</p>
+            </div>
+          </article>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea id="messageInput" rows="2" placeholder="Ask an operations question..."></textarea>
+          <button id="sendButton" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

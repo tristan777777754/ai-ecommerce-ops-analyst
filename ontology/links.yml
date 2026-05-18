@@ -1,0 +1,221 @@
+version: 1
+project: ai_ecommerce_ops_ontology
+description: >
+  Relationship definitions between ontology objects. Links let the agent answer
+  business questions across objects rather than isolated CSV tables.
+
+links:
+  - id: CustomerPlacedOrder
+    from: Customer
+    to: Order
+    relationship: placed
+    source_join:
+      from_table: customers
+      from_key: customer_id
+      to_table: orders
+      to_key: customer_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: Which orders did this customer place?
+
+  - id: OrderContainsOrderItem
+    from: Order
+    to: OrderItem
+    relationship: contains
+    source_join:
+      from_table: orders
+      from_key: order_id
+      to_table: order_items
+      to_key: order_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: What products and sellers were involved in this order?
+
+  - id: OrderItemReferencesProduct
+    from: OrderItem
+    to: Product
+    relationship: references
+    source_join:
+      from_table: order_items
+      from_key: product_id
+      to_table: products
+      to_key: product_id
+    cardinality: many_to_one
+    confidence: high
+    business_question_enabled: Which product was sold in this line item?
+
+  - id: OrderItemFulfilledBySeller
+    from: OrderItem
+    to: Seller
+    relationship: fulfilled_by
+    source_join:
+      from_table: order_items
+      from_key: seller_id
+      to_table: sellers
+      to_key: seller_id
+    cardinality: many_to_one
+    confidence: high
+    business_question_enabled: Which seller fulfilled this sale?
+
+  - id: ProductBelongsToCategory
+    from: Product
+    to: ProductCategory
+    relationship: belongs_to
+    source_join:
+      from_table: products
+      from_key: product_category_name
+      to_table: product_category_name_translation
+      to_key: product_category_name
+    cardinality: many_to_one
+    confidence: high
+    business_question_enabled: Which category does this product belong to?
+
+  - id: OrderHasPayment
+    from: Order
+    to: Payment
+    relationship: has_payment
+    source_join:
+      from_table: orders
+      from_key: order_id
+      to_table: order_payments
+      to_key: order_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: How was this order paid for and how much revenue did it create?
+
+  - id: OrderReceivedReview
+    from: Order
+    to: Review
+    relationship: received_review
+    source_join:
+      from_table: orders
+      from_key: order_id
+      to_table: order_reviews
+      to_key: order_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: What feedback did the customer leave for this order?
+
+  - id: CustomerLocatedInGeography
+    from: Customer
+    to: Geography
+    relationship: located_in
+    source_join:
+      from_table: customers
+      from_key: customer_zip_code_prefix
+      to_table: geolocation
+      to_key: geolocation_zip_code_prefix
+    cardinality: many_to_many_reference
+    confidence: medium
+    business_question_enabled: Where is this customer located?
+
+  - id: SellerLocatedInGeography
+    from: Seller
+    to: Geography
+    relationship: located_in
+    source_join:
+      from_table: sellers
+      from_key: seller_zip_code_prefix
+      to_table: geolocation
+      to_key: geolocation_zip_code_prefix
+    cardinality: many_to_many_reference
+    confidence: medium
+    business_question_enabled: Where is this seller located?
+
+  - id: CustomerBelongsToSegment
+    from: Customer
+    to: CustomerSegment
+    relationship: belongs_to_segment
+    source_join:
+      from_table: derived_customer_rfm
+      from_key: segment
+      to_table: derived_rfm_segment_summary
+      to_key: segment
+    cardinality: many_to_one
+    confidence: high
+    business_question_enabled: What customer segment is this customer in?
+
+  - id: CustomerHasRetentionOpportunity
+    from: Customer
+    to: RetentionOpportunity
+    relationship: has_opportunity
+    source_join:
+      from_table: derived_customer_rfm
+      from_key: customer_unique_id
+      to_table: derived_retention_opportunities
+      to_key: customer_unique_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: Is this customer worth a winback or retention action?
+
+  - id: SellerHasRisk
+    from: Seller
+    to: SellerRisk
+    relationship: has_risk
+    source_join:
+      from_table: derived_seller_performance
+      from_key: seller_id
+      to_table: derived_seller_risk
+      to_key: seller_id
+    cardinality: one_to_one
+    confidence: high
+    business_question_enabled: Why is this seller risky?
+
+  - id: ProductCategoryHasReviewRisk
+    from: ProductCategory
+    to: ReviewRisk
+    relationship: has_review_risk
+    source_join:
+      from_table: derived_review_risk
+      from_key: category_name
+      to_table: derived_product_category
+      to_key: category_name
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: Which categories have elevated dissatisfaction?
+
+  - id: GeographyHasDeliveryRisk
+    from: Geography
+    to: DeliveryRisk
+    relationship: has_delivery_risk
+    source_join:
+      from_table: derived_delivery_by_state
+      from_key: state
+      to_table: derived_geography
+      to_key: state
+    cardinality: one_to_many
+    confidence: medium
+    business_question_enabled: Which regions create delivery risk?
+
+  - id: ProductCategoryHasProductOpportunity
+    from: ProductCategory
+    to: ProductOpportunity
+    relationship: has_opportunity
+    source_join:
+      from_table: derived_category_pareto
+      from_key: category_name
+      to_table: derived_product_opportunities
+      to_key: target_id
+    cardinality: one_to_many
+    confidence: high
+    business_question_enabled: Which categories should be promoted, protected, or investigated?
+
+  - id: BusinessRecommendationTargetsObject
+    from: BusinessRecommendation
+    to:
+      - Customer
+      - Seller
+      - ProductCategory
+      - Geography
+      - Order
+      - Product
+    relationship: targets
+    source_join:
+      from_table: derived_business_recommendations
+      from_key: target_id
+      to_table: target_object_table
+      to_key: target_object_primary_key
+    cardinality: many_to_one
+    confidence: high
+    business_question_enabled: What object does this recommendation act on?
+

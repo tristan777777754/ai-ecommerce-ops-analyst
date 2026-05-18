@@ -1,0 +1,327 @@
+version: 1
+project: ai_ecommerce_ops_ontology
+description: >
+  Approved action types for the AI e-commerce operations analyst. Actions are
+  proposed by the agent as BusinessRecommendation objects. Execution requires
+  evidence and, for all first-version actions, human approval.
+
+defaults:
+  approval_required: true
+  initial_status: proposed
+  allowed_statuses:
+    - proposed
+    - approved
+    - rejected
+    - executed
+    - expired
+  evidence_policy: Every action must include at least two evidence metrics tied to the target object.
+  causal_policy: Use cautious language unless the data proves causality.
+
+actions:
+  - id: SendReactivationOffer
+    target_type: Customer
+    description: Propose a targeted winback offer for a dormant high-value customer.
+    trigger:
+      all:
+        - rfm_segment == "Dormant High Value"
+        - monetary_value is present
+        - recency_days is present
+    priority_logic:
+      high:
+        all:
+          - monetary_value >= 300
+          - recency_days >= 180
+      medium:
+        all:
+          - monetary_value >= 150
+          - recency_days >= 120
+    evidence_required:
+      - customer_unique_id
+      - monetary_value
+      - recency_days
+      - rfm_segment
+    allowed_outputs:
+      - recommendation
+      - customer_winback_list
+    disallowed_outputs:
+      - sending a real coupon without approval
+      - exposing unnecessary personal information
+    approval_required: true
+    status_after_approval: approved
+    execution_notes: >
+      First version only marks the recommendation approved. Real coupon sending
+      requires a future CRM or Lark workflow integration.
+
+  - id: CreateCustomerWinbackCampaign
+    target_type: CustomerSegment
+    description: Propose a campaign for a segment of dormant or at-risk customers.
+    trigger:
+      all:
+        - segment in ["Dormant High Value", "At Risk"]
+        - customers >= 100
+        - revenue_share is present
+    priority_logic:
+      high:
+        any:
+          - revenue_share >= 0.10
+          - revenue >= 100000
+      medium:
+        all:
+          - customers >= 100
+    evidence_required:
+      - segment
+      - customers
+      - revenue
+      - revenue_share
+      - avg_recency_days
+    allowed_outputs:
+      - recommendation
+      - campaign_brief
+    disallowed_outputs:
+      - launching a real campaign without approval
+    approval_required: true
+
+  - id: InvestigateSeller
+    target_type: Seller
+    description: Propose an operational investigation for a risky seller.
+    trigger:
+      all:
+        - orders >= 30
+        - any:
+            - late_delivery_rate >= 0.15
+            - low_review_rate >= 0.18
+            - seller_reliability_score <= 75
+    priority_logic:
+      high:
+        any:
+          - low_review_rate >= 0.35
+          - late_delivery_rate >= 0.25
+          - seller_reliability_score <= 70
+      medium:
+        any:
+          - low_review_rate >= 0.18
+          - late_delivery_rate >= 0.15
+    evidence_required:
+      - seller_id
+      - orders
+      - revenue
+      - late_delivery_rate
+      - low_review_rate
+      - seller_reliability_score
+    allowed_outputs:
+      - recommendation
+      - seller_risk_brief
+    disallowed_outputs:
+      - suspending a seller automatically
+      - claiming seller caused dissatisfaction without causal proof
+    approval_required: true
+    execution_notes: >
+      First version should recommend investigation or monitoring, not punitive
+      action. Deprioritization is a separate action with stricter requirements.
+
+  - id: DeprioritizeRiskySeller
+    target_type: Seller
+    description: Propose reducing reliance on a seller for high-value or risk-sensitive orders.
+    trigger:
+      all:
+        - orders >= 50
+        - revenue is present
+        - any:
+            - late_delivery_rate >= 0.25
+            - low_review_rate >= 0.30
+            - seller_reliability_score <= 65
+    priority_logic:
+      high:
+        all:
+          - revenue >= 10000
+          - any:
+              - late_delivery_rate >= 0.25
+              - low_review_rate >= 0.30
+      medium:
+        all:
+          - orders >= 50
+          - seller_reliability_score <= 70
+    evidence_required:
+      - seller_id
+      - orders
+      - revenue
+      - late_delivery_rate
+      - low_review_rate
+      - seller_reliability_score
+    allowed_outputs:
+      - recommendation
+      - what_if_prompt
+    disallowed_outputs:
+      - automatically changing seller routing
+      - removing seller listings without approval
+    approval_required: true
+
+  - id: MonitorDeliveryRisk
+    target_type: Geography
+    description: Propose monitoring a geography with elevated delivery delay.
+    trigger:
+      all:
+        - orders >= 100
+        - late_delivery_rate >= 0.12
+    priority_logic:
+      high:
+        all:
+          - orders >= 500
+          - late_delivery_rate >= 0.15
+      medium:
+        all:
+          - orders >= 100
+          - late_delivery_rate >= 0.12
+    evidence_required:
+      - target_id
+      - orders
+      - late_delivery_rate
+      - avg_delay_days
+    allowed_outputs:
+      - recommendation
+      - delivery_risk_watchlist
+    disallowed_outputs:
+      - changing promised delivery dates automatically
+      - blaming a carrier not represented in the dataset
+    approval_required: true
+
+  - id: FixDeliveryProcess
+    target_type: DeliveryRisk
+    description: Propose process investigation for a delivery risk cluster.
+    trigger:
+      all:
+        - late_delivery_rate >= 0.15
+        - orders >= 100
+        - avg_delay_days is present
+    priority_logic:
+      high:
+        any:
+          - late_delivery_rate >= 0.20
+          - avg_delay_days >= 5
+      medium:
+        all:
+          - late_delivery_rate >= 0.15
+    evidence_required:
+      - delivery_risk_id
+      - target_type
+      - target_id
+      - orders
+      - late_delivery_rate
+      - avg_delay_days
+    allowed_outputs:
+      - recommendation
+      - investigation_brief
+    disallowed_outputs:
+      - changing logistics providers automatically
+      - asserting root cause without supporting fields
+    approval_required: true
+
+  - id: InvestigateLowReviewProductCategory
+    target_type: ProductCategory
+    description: Propose investigation for a category with elevated low-review rate.
+    trigger:
+      all:
+        - orders >= 100
+        - low_review_rate >= 0.15
+    priority_logic:
+      high:
+        all:
+          - revenue >= 100000
+          - low_review_rate >= 0.20
+      medium:
+        all:
+          - orders >= 100
+          - low_review_rate >= 0.15
+    evidence_required:
+      - category_name
+      - orders
+      - revenue
+      - low_review_rate
+      - avg_review_score
+    allowed_outputs:
+      - recommendation
+      - review_risk_brief
+    disallowed_outputs:
+      - claiming product quality is the only cause
+      - changing product listings automatically
+    approval_required: true
+
+  - id: PromoteHighRevenueCategory
+    target_type: ProductCategory
+    description: Propose protecting or promoting a high-revenue category.
+    trigger:
+      all:
+        - pareto_band == "top_80_percent_revenue"
+        - revenue_share is present
+    priority_logic:
+      high:
+        all:
+          - revenue_share >= 0.05
+          - low_review_rate < 0.15
+      medium:
+        all:
+          - pareto_band == "top_80_percent_revenue"
+    evidence_required:
+      - category_name
+      - revenue
+      - revenue_share
+      - cumulative_share
+      - low_review_rate
+    allowed_outputs:
+      - recommendation
+      - category_opportunity_brief
+    disallowed_outputs:
+      - increasing ad spend automatically
+      - recommending promotion when review risk is high without warning
+    approval_required: true
+
+  - id: PrioritizeHighValueCustomer
+    target_type: Customer
+    description: Propose giving attention or support priority to a high-value customer.
+    trigger:
+      any:
+        - monetary_value >= 300
+        - rfm_segment in ["Champions", "Loyal High Value", "Dormant High Value"]
+    priority_logic:
+      high:
+        any:
+          - monetary_value >= 1000
+          - rfm_segment == "Champions"
+      medium:
+        any:
+          - monetary_value >= 300
+    evidence_required:
+      - customer_unique_id
+      - monetary_value
+      - frequency
+      - recency_days
+      - rfm_segment
+    allowed_outputs:
+      - recommendation
+      - customer_priority_list
+    disallowed_outputs:
+      - exposing unnecessary personal information
+      - promising special treatment without approval
+    approval_required: true
+
+recommendation_schema:
+  required_fields:
+    - recommendation_id
+    - action_type
+    - target_type
+    - target_id
+    - priority
+    - trigger
+    - reason
+    - evidence
+    - status
+    - created_at
+  optional_fields:
+    - owner
+    - approved_at
+    - rejected_at
+    - executed_at
+    - expires_at
+    - source_workflow
+    - what_if_result
+
