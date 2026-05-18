@@ -4,6 +4,20 @@ An AI-agent-operated e-commerce operations analyst demo that turns raw marketpla
 
 This project simulates a Forward Deployed Engineer style engagement for a small e-commerce marketplace. It uses the Olist Brazilian E-Commerce Public Dataset as the raw operating data, builds a Lark Base-ready analysis layer, translates the business into a Palantir/AIP-inspired ontology, and exposes a local AI analyst UI that answers operator questions from recommendation records and action rules.
 
+## Demo Preview
+
+### AI Analyst Operator UI
+
+![AI analyst operator UI answering a weekly operations question](docs/images/ai-analyst-ui.png)
+
+The local web UI lets an operator ask for recommended actions, evidence, and approval status from the ontology and `BusinessRecommendation` records.
+
+### Lark Base Analysis Layer
+
+![Lark Base analysis workspace showing customer RFM and analysis tables](docs/images/lark-base-analysis-layer.png)
+
+The analysis layer is staged in Lark Base-style tables and views, including customer RFM, seller risk, category performance, delivery risk, and recommendation records.
+
 ## What This Demo Shows
 
 The demo answers practical operator questions:
