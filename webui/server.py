@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
 import traceback
 import urllib.error
 import urllib.request
@@ -26,6 +27,7 @@ STATIC = ROOT / "webui" / "static"
 DEFAULT_MODEL = "gpt-5-mini"
 PORT = int(os.getenv("PORT", "8787"))
 DEBUG_RESPONSE_FILE = ROOT / "outputs" / "webui_last_openai_response.json"
+TRANSIENT_OPENAI_STATUS_CODES = {408, 409, 429, 500, 502, 503, 504, 520, 522, 524}
 
 
 CONTEXT_FILES = [
@@ -189,20 +191,27 @@ Current user question:
         method="POST",
     )
 
-    try:
-        with urllib.request.urlopen(request, timeout=90) as response:
-            data = json.loads(response.read().decode("utf-8"))
-        answer = extract_output_text(data)
-        if answer:
-            return {"ok": True, "answer": answer, "model": model}
-        DEBUG_RESPONSE_FILE.parent.mkdir(parents=True, exist_ok=True)
-        DEBUG_RESPONSE_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        return {"ok": False, "error": response_debug_summary(data), "debug_file": str(DEBUG_RESPONSE_FILE)}
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        return {"ok": False, "error": f"OpenAI API error {exc.code}: {body}"}
-    except Exception as exc:  # pragma: no cover - local demo diagnostics
-        return {"ok": False, "error": f"{type(exc).__name__}: {exc}", "trace": traceback.format_exc()}
+    last_error = ""
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                data = json.loads(response.read().decode("utf-8"))
+            answer = extract_output_text(data)
+            if answer:
+                return {"ok": True, "answer": answer, "model": model}
+            DEBUG_RESPONSE_FILE.parent.mkdir(parents=True, exist_ok=True)
+            DEBUG_RESPONSE_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+            return {"ok": False, "error": response_debug_summary(data), "debug_file": str(DEBUG_RESPONSE_FILE)}
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            last_error = f"OpenAI API error {exc.code}: {body}"
+            if exc.code not in TRANSIENT_OPENAI_STATUS_CODES or attempt == 2:
+                return {"ok": False, "error": last_error}
+            time.sleep(2**attempt)
+        except Exception as exc:  # pragma: no cover - local demo diagnostics
+            return {"ok": False, "error": f"{type(exc).__name__}: {exc}", "trace": traceback.format_exc()}
+
+    return {"ok": False, "error": last_error or "OpenAI API request failed."}
 
 
 class Handler(BaseHTTPRequestHandler):
