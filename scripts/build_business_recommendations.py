@@ -32,7 +32,7 @@ OUT_DIR = ROOT / "outputs" / "business_recommendations"
 OUT_CSV = OUT_DIR / "business_recommendations.csv"
 OUT_MD = OUT_DIR / "BUSINESS_RECOMMENDATIONS.md"
 OUT_JSON = OUT_DIR / "business_recommendations_lark_batch.json"
-CREATED_AT = date(2026, 5, 18).isoformat()
+CREATED_AT = date.today().isoformat()
 
 FIELDS = [
     "recommendation_id",

@@ -14,6 +14,8 @@ venv/
 env/
 
 outputs/webui_last_openai_response.json
+outputs/business_recommendations/.tmp_publish/
+logs/
 
 node_modules/
 .cache/

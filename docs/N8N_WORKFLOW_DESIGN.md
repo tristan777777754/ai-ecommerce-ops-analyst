@@ -82,9 +82,18 @@ The full system should be split into three workflows.
 
 ### Goal
 
-Turn the raw e-commerce dataset into a Lark-ready multi-dimensional analysis layer.
+Turn the raw e-commerce dataset into a real Lark Base multi-dimensional analysis workspace.
 
-This workflow prepares analysis tables such as:
+Python is only used to create staging workbooks from the local CSV dataset. The actual analysis workspace must be created or refreshed through Lark CLI / Lark Base. This keeps the project aligned with the intended agent-operated workflow:
+
+```text
+raw dataset
+  -> Python staging workbook builders
+  -> Lark CLI imports the workbooks as Base documents
+  -> Lark Base becomes the shared multi-dimensional analysis layer
+```
+
+This workflow should prepare and publish analysis tables such as:
 
 - Customer RFM segments
 - Seller risk watchlist
@@ -99,9 +108,32 @@ This workflow prepares analysis tables such as:
 Manual Trigger
   -> Set Run Context
   -> Execute Command: build raw import workbook
+  -> Execute Command: import raw workbook to Lark Base
   -> Execute Command: build analysis workbook
-  -> Optional: upload / import workbook to Lark Base
-  -> Optional: notify operator that analysis layer is ready
+  -> Execute Command: import analysis workbook to Lark Base
+  -> Optional: create / refresh Lark Base views and dashboard
+  -> Notify operator that Lark analysis layer is ready
+```
+
+### Runtime Requirement
+
+Because n8n runs in Docker, the Execute Command nodes must run in an environment that can access:
+
+```text
+/Users/tristan/AI E-commerce Ops Analyst
+/Users/tristan/.npm-global/bin/lark-cli
+Lark CLI auth/config for the current user
+```
+
+If those paths are not mounted into the n8n container, use a host runner pattern instead, such as SSH to the host machine or a small local service that runs the commands on the host. Do not treat local Excel generation as success unless the Lark Base import also completes.
+
+Current implementation:
+
+```text
+n8n Docker container
+  -> HTTP Request nodes call http://host.docker.internal:8788/run
+  -> macOS LaunchAgent runs scripts/n8n_workflow1_runner.py
+  -> host runner uses local Python and authenticated Lark CLI
 ```
 
 ### Node Details
@@ -126,7 +158,9 @@ Fields:
 {
   "run_id": "manual_{{$now}}",
   "dataset_source": "local_dataset",
-  "project_root": "/Users/tristan/AI E-commerce Ops Analyst"
+  "project_root": "/Users/tristan/AI E-commerce Ops Analyst",
+  "lark_cli": "/Users/tristan/.npm-global/bin/lark-cli",
+  "lark_folder_token": "RbBdfI3vElN7nCdOGXdjhLySpec"
 }
 ```
 
@@ -144,7 +178,34 @@ Expected output:
 outputs/lark_import_staging/olist_raw_tables_for_lark_base.xlsx
 ```
 
-#### 4. Execute Command: Build Analysis Workbook
+#### 4. Execute Command: Import Raw Workbook To Lark Base
+
+Command:
+
+```bash
+cd "/Users/tristan/AI E-commerce Ops Analyst" && /Users/tristan/.npm-global/bin/lark-cli drive +import --type bitable --file outputs/lark_import_staging/olist_raw_tables_for_lark_base.xlsx --name "AI E-commerce Ops Analyst - Raw Data {{$json.run_id}}" --folder-token RbBdfI3vElN7nCdOGXdjhLySpec --as user
+```
+
+Expected result:
+
+```text
+A Lark Base is created or refreshed for raw source tables.
+The import result returns a Base URL / token and an import ticket.
+```
+
+Known existing raw-data Base:
+
+```text
+https://gjp09unafl8q.jp.larksuite.com/base/TARLbZQYXaU1g7syARVjHYf4plc
+```
+
+Latest Workflow 1 raw-data Base:
+
+```text
+https://gjp09unafl8q.jp.larksuite.com/base/DVQabiT22adhQnsSBjijlJySpHc
+```
+
+#### 5. Execute Command: Build Analysis Workbook
 
 Command:
 
@@ -158,11 +219,64 @@ Expected output:
 outputs/lark_import_staging/olist_analysis_layer_for_lark_base.xlsx
 ```
 
+#### 6. Execute Command: Import Analysis Workbook To Lark Base
+
+Command:
+
+```bash
+cd "/Users/tristan/AI E-commerce Ops Analyst" && /Users/tristan/.npm-global/bin/lark-cli drive +import --type bitable --file outputs/lark_import_staging/olist_analysis_layer_compact_for_lark_base.xlsx --name "AI E-commerce Ops Analyst - Analysis Layer {{$json.run_id}}" --folder-token RbBdfI3vElN7nCdOGXdjhLySpec --as user
+```
+
+Expected result:
+
+```text
+A Lark Base is created or refreshed for the analysis layer.
+The import result returns a Base URL / token and an import ticket.
+```
+
+The full workbook remains available locally at:
+
+```text
+outputs/lark_import_staging/olist_analysis_layer_for_lark_base.xlsx
+```
+
+The compact Lark import workbook excludes oversized detail sheets such as full `order_facts` and full `customer_rfm`, while retaining the operator-facing analysis tables needed for the first workflow.
+
+Known existing analysis-layer Base:
+
+```text
+https://gjp09unafl8q.jp.larksuite.com/base/EXkPb3IaUapEgfsYMvKjYGdxpQe
+```
+
+Latest Workflow 1 analysis-layer Base:
+
+```text
+https://gjp09unafl8q.jp.larksuite.com/base/NSswboSyUamlCVsrKyzjQLqWpze
+```
+
+#### 7. Optional Execute Command: Refresh Views And Dashboard
+
+After the analysis Base import succeeds, use Lark CLI Base commands to recreate or refresh operator-facing views such as:
+
+```text
+Winback Priority
+Seller Risk Triage
+Category Pareto
+Delivery Risk Monitor
+Review Risk Investigation
+E-commerce Ops Analysis Dashboard
+```
+
+Use `lark-cli base +view-create`, `base +view-set-sort`, `base +view-set-filter`, and dashboard commands only after the imported Base token and table IDs are known.
+
 ### Success Criteria
 
 - Raw import workbook exists
 - Analysis workbook exists
-- n8n execution shows both commands completed successfully
+- Raw dataset is imported into Lark Base
+- Analysis layer is imported into Lark Base
+- n8n execution shows the Python staging commands and Lark CLI import commands completed successfully
+- The operator can open the Lark Base analysis workspace and see the raw tables plus derived analysis tables
 
 ## Workflow 2: Analysis Layer To BusinessRecommendation
 
@@ -176,21 +290,61 @@ These records are the assistant's action memory. The webui assistant should answ
 
 ```text
 Manual Trigger
-  -> Execute Command: build business recommendations
-  -> Read File: WEEKLY_OPS_BRIEF.md
-  -> Read File: business_recommendations.csv
-  -> Optional: publish recommendations to Lark Base
+  -> Set Run Context
+  -> HTTP Request: build business recommendations through host runner
+  -> HTTP Request: publish recommendations to Lark Base through host runner
   -> HTTP Request: ask assistant to summarize latest recommendations
+  -> Set: workflow completion payload
+```
+
+Current implementation:
+
+```text
+n8n workflow id: jTn8aUJ8YtoVK7Ic
+n8n URL: http://localhost:5678/workflow/jTn8aUJ8YtoVK7Ic
+analysis Base: https://gjp09unafl8q.jp.larksuite.com/base/NSswboSyUamlCVsrKyzjQLqWpze
+business_recommendations table id: tblX5L0laIRjYrwv
+host runner: http://host.docker.internal:8788/run
+assistant API: http://host.docker.internal:8787/api/chat
 ```
 
 ### Node Details
 
-#### 1. Execute Command: Build Business Recommendations
+#### 1. Set Run Context
 
-Command:
+Fields:
 
-```bash
-cd "/Users/tristan/AI E-commerce Ops Analyst" && python3 scripts/build_business_recommendations.py
+```json
+{
+  "run_id": "manual_{{$now}}",
+  "analysis_base_token": "NSswboSyUamlCVsrKyzjQLqWpze",
+  "business_recommendations_table": "business_recommendations",
+  "runner_url": "http://host.docker.internal:8788",
+  "assistant_url": "http://host.docker.internal:8787/api/chat"
+}
+```
+
+#### 2. HTTP Request: Build Business Recommendations
+
+Method:
+
+```text
+POST
+```
+
+URL:
+
+```text
+http://host.docker.internal:8788/run
+```
+
+Body:
+
+```json
+{
+  "step": "build_business_recommendations",
+  "run_id": "{{$json.run_id}}"
+}
 ```
 
 Expected outputs:
@@ -199,26 +353,41 @@ Expected outputs:
 outputs/business_recommendations/business_recommendations.csv
 outputs/business_recommendations/BUSINESS_RECOMMENDATIONS.md
 outputs/business_recommendations/business_recommendations_lark_batch.json
-outputs/business_recommendations/WEEKLY_OPS_BRIEF.md
 ```
 
-#### 2. Optional Execute Command: Publish To Lark Base
+#### 3. HTTP Request: Publish To Lark Base
 
-Use only when Lark CLI credentials and target Base IDs are configured.
+The host runner executes `scripts/publish_business_recommendations_to_lark.py` with the authenticated local Lark CLI user.
 
-Command:
+Method:
 
-```bash
-cd "/Users/tristan/AI E-commerce Ops Analyst" && python3 scripts/publish_business_recommendations_to_lark.py
+```text
+POST
+```
+
+URL:
+
+```text
+http://host.docker.internal:8788/run
+```
+
+Body:
+
+```json
+{
+  "step": "publish_business_recommendations",
+  "run_id": "{{$json.run_id}}"
+}
 ```
 
 Expected result:
 
 ```text
-BusinessRecommendation records are created in the configured Lark Base table.
+BusinessRecommendation records exist in the configured Lark Base table.
+The publish script is idempotent: when the table already has the expected record count, it skips creating duplicates.
 ```
 
-#### 3. HTTP Request: Ask Local Assistant For Summary
+#### 4. HTTP Request: Ask Local Assistant For Summary
 
 Method:
 
@@ -254,9 +423,21 @@ Expected response:
 ### Success Criteria
 
 - `business_recommendations.csv` is regenerated
-- `WEEKLY_OPS_BRIEF.md` is regenerated
+- `BUSINESS_RECOMMENDATIONS.md` is regenerated
+- `business_recommendations_lark_batch.json` is regenerated
+- Lark Base table `business_recommendations` exists in the analysis Base
+- Lark publish is idempotent and does not duplicate existing recommendation records
 - Assistant can answer from the latest recommendation records
-- Optional Lark Base sync succeeds
+
+Latest verified execution:
+
+```text
+n8n execution id: 10
+status: success
+records generated: 94
+existing Lark records: 94
+created Lark records on rerun: 0
+```
 
 ## Workflow 3: Assistant Action Workflow
 
@@ -463,4 +644,3 @@ it rebuilds the analysis layer from the dataset, generates BusinessRecommendatio
 
 The assistant answers from this recommendation memory, so the user gets grounded operational advice instead of generic chatbot output.
 ```
-

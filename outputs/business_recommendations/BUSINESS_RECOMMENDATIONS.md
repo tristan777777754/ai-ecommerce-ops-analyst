@@ -5,7 +5,7 @@ Generated from the Olist analysis layer and the e-commerce ontology action rules
 ## Summary
 
 - Total recommendations: 94
-- Generated at: 2026-05-18
+- Generated at: 2026-06-02
 - Status: all records are `proposed` and require human approval before execution.
 
 ## Counts by Action and Priority
